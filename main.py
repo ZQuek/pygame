@@ -16,6 +16,7 @@ def main():
     while True:
         screen.fill((0,0,0))
         player1.draw(screen)
+        player1.update(dt)
         pg.display.flip()
         dt = timer.tick(60)/1000
         
