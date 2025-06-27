@@ -12,17 +12,27 @@ def main():
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2   
+    
+    updatable = pg.sprite.Group()
+    drawable = pg.sprite.Group()        
+    Player.containers = (updatable, drawable)
     player1 = Player(x, y)
+    
     while True:
-        screen.fill((0,0,0))
-        player1.draw(screen)
-        player1.update(dt)
-        pg.display.flip()
-        dt = timer.tick(60)/1000
-        
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
+            
+        screen.fill((0,0,0))
+        updatable.update(dt)
+        
+        for sprite in drawable:
+            sprite.draw(screen)
+        
+        pg.display.flip()
+        dt = timer.tick(60)/1000
+        
+        
         
 if __name__ == "__main__":
     main()
