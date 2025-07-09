@@ -21,7 +21,7 @@ def main():
     AsteroidField.containers = (updatable)
     Asteroid.containers = (asteroids, updatable, drawable)
     Player.containers = (updatable, drawable)
-    player1 = Player(x, y)
+    Player(x, y)
     AsteroidField()
     
     while True:
